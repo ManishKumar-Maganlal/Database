@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <a href="/login">Admin Login</a>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Employee ID</th>
+            <th>Contact No</th>
+            <th>Location</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee['name'] }}</td>
+            <td>{{ employee['employee_id'] }}</td>
+            <td>{{ employee['contact_no'] }}</td>
+            <td>{{ employee['location'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

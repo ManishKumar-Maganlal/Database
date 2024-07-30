@@ -1,0 +1,62 @@
+                                      +---------------+
+                                      |  User Requests  |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Authentication  |
+                                      |  (Check if admin)  |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Create Database  |
+                                      |  (if not exists)    |
+                                      |  using Python      |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Add Column Names  |
+                                      |  (name, employee id,  |
+                                      |   contact no, location) |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Admin Actions    |
+                                      |  (Add/Delete Data)  |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Data Validation  |
+                                      |  (Check location:    |
+                                      |   offshore or onshore) |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Update Database  |
+                                      |  (Add/Delete Data)  |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  View Database    |
+                                      |  (for non-admin users) |
+                                      +---------------+
+                                             |
+                                             |
+                                             v
+                                      +---------------+
+                                      |  Display Data     |
+                                      |  (in web page)      |
+                                      +---------------+
