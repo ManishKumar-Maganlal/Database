@@ -10,13 +10,22 @@ def create_database():
     # Create table with specified columns
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS employees (
-        name TEXT NOT NULL,
-        employee_id TEXT NOT NULL,
-        contact_no TEXT NOT NULL,
-        location TEXT NOT NULL CHECK (location IN ('offshore', 'onshore')),
-        city TEXT NOT NULL CHECK (city IN ('Chennai','Bangalore','Pune') or ('UK','US','Canada'))
-	)
-''')
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        associateid TEXT NOT NULL,
+        associatename TEXT NOT NULL,
+        departmentdescription TEXT NOT NULL,
+        finalmisdepartment TEXT NOT NULL,
+        practicename TEXT NOT NULL,
+        projectid TEXT NOT NULL,
+        projectname TEXT NOT NULL,
+        location TEXT NOT NULL,
+        region TEXT NOT NULL,
+        country TEXT NOT NULL,
+        city TEXT NOT NULL,
+        citydescription TEXT NOT NULL,
+        emailid TEXT NOT NULL
+    )
+    ''')
     conn.commit()
     conn.close()
 
@@ -27,10 +36,10 @@ if __name__ == '__main__':
 
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-import sqlite3
+
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with a strong secret key
+app.secret_key = '12345'  # Replace with a strong secret key
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE'] = 'filesystem'
 
@@ -70,14 +79,22 @@ def admin():
     conn = get_db_connection()
 
     if request.method == 'POST':
-        name = request.form['name']
-        employee_id = request.form['employee_id']
-        contact_no = request.form['contact_no']
+        associateid = request.form['associateid']
+        associatename = request.form['associatename']
+        departmentdescription = request.form['departmentdescription']
+        finalmisdepartment = request.form['finalmisdepartment']
+        practicename = request.form['practicename']
+        projectid = request.form['projectid']
+        projectname = request.form['projectname']
         location = request.form['location']
+        region = request.form['region']
+        country = request.form['country']
         city = request.form['city']
+        citydescription = request.form['citydescription']
+        emailid = request.form['emailid']
         try:
-            conn.execute('INSERT INTO employees (name, employee_id, contact_no, location, city) VALUES (?, ?, ?, ?, ?)',
-                        (name, employee_id, contact_no, location, city))
+            conn.execute('INSERT INTO employees (associateid,associatename,departmentdescription,finalmisdepartment,practicename,projectid,projectname,location,region,country,city,citydescription,emailid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                        (associateid, associatename, departmentdescription, finalmisdepartment, practicename, projectid, projectname, location, region, country, city, citydescription, emailid))
             conn.commit()
             flash('Employee added successfully!')
         except Exception as e:

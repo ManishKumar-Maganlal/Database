@@ -1,10 +1,16 @@
 /* styles.css */
 
+
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 10px;
+    background-color: black;
 }
+
+
 
 header {
     background-color: #333;
@@ -12,6 +18,20 @@ header {
     padding: 1em;
     text-align: center;
 }
+
+h1 {
+    background-color: #80ced6; /* Add your desired background color here */
+    border: 2px solid #000; /* Add your desired border color and width here */
+    padding: 10px; /* Optional: Add padding to make the background color more visible */
+}
+
+a {
+    background-color: #88b6b7; /* Add your desired background color here */
+    border: 1px solid #000; /* Add your desired border color and width here */
+    padding: 5px; /* Optional: Add padding to make the background color more visible */
+    text-decoration: none; /* Optional: Remove underline from links */
+}
+
 
 header h1 {
     margin: 0;
@@ -73,17 +93,17 @@ label {
 }
 
 input[type="text"], input[type="password"] {
-    width: 100%;
+    width: 15%;
     height: 2em;
     margin-bottom: 1em;
-    padding: 1em;
+    padding: 0em;
     border: 1px solid #ccc;
 }
 
 input[type="submit"] {
     background-color: #333;
     color: #fff;
-    padding: 1em 2em;
+    padding: 0em 2em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
