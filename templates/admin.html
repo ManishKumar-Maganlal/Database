@@ -9,66 +9,91 @@
 <body>
     <h1>Admin Panel</h1>
     <form method="post">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="text" name="employee_id" placeholder="Employee ID" required>
-        <input type="text" name="contact_no" placeholder="Contact No" required>
-        <select id="location" name="location">
+        <input type="text" name="associateid" placeholder="AssociateID" required>
+        <input type="text" name="associatename" placeholder="AssociateName" required>
+        <input type="text" name="departmentdescription" placeholder="DepartmentDescription" required>
+        <input type="text" name="finalmisdepartment" placeholder="FinalMISDepartment" required>
+        <input type="text" name="practicename" placeholder="PracticeName" required>
+        <input type="text" name="projectid" placeholder="ProjectID" required>
+        <input type="text" name="projectname" placeholder="ProjectName" required>
+        <select name="location" id="location" type="text" autocomplete="given-name" required>
             <option value="">Select Location</option>
             <option value="onshore">Onshore</option>
             <option value="offshore">Offshore</option>
           </select>
           
-          <select id="city" name="city">
+          <select name="city" id="city-select" type="text" autocomplete="given-name" required>
             <option value="">Select City</option>
           </select>
           
           <script>
-          function updateCityOptions() {
-            const location = document.getElementById("location").value;
-            const citySelect = document.getElementById("city");
-            citySelect.innerHTML = "";
+            function updateCityOptions() {
+              const location = document.getElementById("location").value;
+              const citySelect = document.getElementById("city-select");
+              citySelect.innerHTML = "";
           
-            if (location === "onshore") {
-              const onshoreCities = ["UK", "US", "Canada"];
-              onshoreCities.forEach((city) => {
-                const option = document.createElement("option");
-                option.value = city;
-                option.text = city;
-                citySelect.add(option);
-              });
-            } else if (location === "offshore") {
-              const offshoreCities = ["Chennai", "Bangalore", "Pune"];
-              offshoreCities.forEach((city) => {
-                const option = document.createElement("option");
-                option.value = city;
-                option.text = city;
-                citySelect.add(option);
-              });
+              if (location === "onshore") {
+                const onshoreCities = ["UK", "US", "Canada"];
+                onshoreCities.forEach((city) => {
+                  const option = document.createElement("option");
+                  option.value = city;
+                  option.text = city;
+                  citySelect.appendChild(option);
+                });
+              } else if (location === "offshore") {
+                const offshoreCities = ["Bangalore", "Mumbai", "Delhi"];
+                offshoreCities.forEach((city) => {
+                  const option = document.createElement("option");
+                  option.value = city;
+                  option.text = city;
+                  citySelect.appendChild(option);
+                });
+              }
             }
-          }
           
-          document.getElementById("location").addEventListener("change", updateCityOptions);
+            document.getElementById("location").addEventListener("change", updateCityOptions);
           </script>
-          
-    <input type="submit" value="Add Employee">
+        <input type="text" name="region" placeholder="Region" required>
+        <input type="text" name="country" placeholder="Country" required>
+        <input type="text" name="citydescription" placeholder="CityDescription" required>
+        <input type="text" name="emailid" placeholder="EmailID" required>
+        <input type="submit" value="Add Employee">
+        <br>
+        <br>
     </form>
     
     <table border="1">
         <tr>
-            <th>Name</th>
-            <th>Employee ID</th>
-            <th>Contact No</th>
+            <th>AssociateID</th>
+            <th>AssociateName</th>
+            <th>DepartmentDescription</th>
+            <th>FinalMISDepartment</th>
+            <th>PracticeName</th>
+            <th>ProjectID</th>
+            <th>ProjectName</th>
             <th>Location</th>
+            <th>Region</th>
+            <th>Country</th>
             <th>City</th>
+            <th>CityDescription</th>
+            <th>EmailID</th>
             <th>Actions</th>
         </tr>
         {% for employee in employees %}
         <tr>
-            <td>{{ employee['name'] }}</td>
-            <td>{{ employee['employee_id'] }}</td>
-            <td>{{ employee['contact_no'] }}</td>
+            <td>{{ employee['associateid'] }}</td>
+            <td>{{ employee['associatename'] }}</td>
+            <td>{{ employee['departmentdescription'] }}</td>
+            <td>{{ employee['finalmisdepartment'] }}</td>
+            <td>{{ employee['practicename'] }}</td>
+            <td>{{ employee['projectid'] }}</td>
+            <td>{{ employee['projectname'] }}</td>
             <td>{{ employee['location'] }}</td>
+            <td>{{ employee['region'] }}</td>
+            <td>{{ employee['country'] }}</td>
             <td>{{ employee['city'] }}</td>
+            <td>{{ employee['citydescription'] }}</td>
+            <td>{{ employee['emailid'] }}</td>
             <td>
                 <form method="post" action="{{ url_for('delete_employee', id=employee['id']) }}">
                     <input type="submit" value="Delete">
@@ -77,6 +102,7 @@
         </tr>
         {% endfor %}
     </table>
+    <br>
     <br>
     <a href="/logout">Logout</a>
 </body>

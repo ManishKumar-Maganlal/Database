@@ -13,156 +13,37 @@
     <br>
     <table border="1">
         <tr>
-            <th>Name</th>
-            <th>Employee ID</th>
-            <th>Contact No</th>
+            <th>AssociateID</th>
+            <th>AssociateName</th>
+            <th>DepartmentDescription</th>
+            <th>FinalMISDepartment</th>
+            <th>PracticeName</th>
+            <th>ProjectID</th>
+            <th>ProjectName</th>
             <th>Location</th>
+            <th>Region</th>
+            <th>Country</th>
             <th>City</th>
+            <th>CityDescription</th>
+            <th>EmailID</th>
         </tr>
         {% for employee in employees %}
         <tr>
-            <td>{{ employee['name'] }}</td>
-            <td>{{ employee['employee_id'] }}</td>
-            <td>{{ employee['contact_no'] }}</td>
+            <td>{{ employee['associateid'] }}</td>
+            <td>{{ employee['associatename'] }}</td>
+            <td>{{ employee['departmentdescription'] }}</td>
+            <td>{{ employee['finalmisdepartment'] }}</td>
+            <td>{{ employee['practicename'] }}</td>
+            <td>{{ employee['projectid'] }}</td>
+            <td>{{ employee['projectname'] }}</td>
             <td>{{ employee['location'] }}</td>
+            <td>{{ employee['region'] }}</td>
+            <td>{{ employee['country'] }}</td>
             <td>{{ employee['city'] }}</td>
+            <td>{{ employee['citydescription'] }}</td>
+            <td>{{ employee['emailid'] }}</td>
         </tr>
         {% endfor %}
     </table>
 </body>
 </html>
-
-
-
-
-
-
-/* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 10px;
-}
-
-
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-}
-
-h1 {
-    background-color: #80ced6; /* Add your desired background color here */
-    border: 2px solid #000; /* Add your desired border color and width here */
-    padding: 10px; /* Optional: Add padding to make the background color more visible */
-}
-
-a {
-    background-color: #88b6b7; /* Add your desired background color here */
-    border: 1px solid #000; /* Add your desired border color and width here */
-    padding: 5px; /* Optional: Add padding to make the background color more visible */
-    text-decoration: none; /* Optional: Remove underline from links */
-}
-
-
-header h1 {
-    margin: 0;
-}
-
-nav {
-    background-color: #444;
-    padding: 1em;
-    text-align: center;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1em;
-}
-
-nav a:hover {
-    color: #ccc;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-}
-
-main h2 {
-    margin-bottom: 1em;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 1em;
-    text-align: left;
-}
-
-th {
-    background-color: #f0f0f0;
-}
-
-td {
-    background-color: #fff;
-}
-
-form {
-    margin-top: 2em;
-}
-
-label {
-    display: block;
-    margin-bottom: 1em;
-}
-
-input[type="text"], input[type="password"] {
-    width: 15%;
-    height: 2em;
-    margin-bottom: 1em;
-    padding: 1em;
-    border: 1px solid #ccc;
-}
-
-input[type="submit"] {
-    background-color: #333;
-    color: #fff;
-    padding: 1em 2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #444;
-}
-
-.flash {
-    background-color: #fff;
-    color: #333;
-    padding: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 1em;
-}
-
-.flash-success {
-    background-color: #dff0d8;
-    color: #3e8e41;
-}
-
-.flash-error {
-    background-color: #f2dede;
-    color: #a94442;
-}
