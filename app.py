@@ -10,13 +10,13 @@ def create_database():
     # Create table with specified columns
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS employees (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         employee_id TEXT NOT NULL,
         contact_no TEXT NOT NULL,
-        location TEXT NOT NULL CHECK (location IN ('offshore', 'onshore'))
-    )
-    ''')
+        location TEXT NOT NULL CHECK (location IN ('offshore', 'onshore')),
+        city TEXT NOT NULL CHECK (city IN ('Chennai','Bangalore','Pune') or ('UK','US','Canada'))
+	)
+''')
     conn.commit()
     conn.close()
 
@@ -74,10 +74,14 @@ def admin():
         employee_id = request.form['employee_id']
         contact_no = request.form['contact_no']
         location = request.form['location']
-        conn.execute('INSERT INTO employees (name, employee_id, contact_no, location) VALUES (?, ?, ?, ?)',
-                     (name, employee_id, contact_no, location))
-        conn.commit()
-        flash('Employee added successfully!')
+        city = request.form['city']
+        try:
+            conn.execute('INSERT INTO employees (name, employee_id, contact_no, location, city) VALUES (?, ?, ?, ?, ?)',
+                        (name, employee_id, contact_no, location, city))
+            conn.commit()
+            flash('Employee added successfully!')
+        except Exception as e:
+            flash('Error adding employee: {}'.format(e))
         return redirect(url_for('admin'))
 
     employees = conn.execute('SELECT * FROM employees').fetchall()
